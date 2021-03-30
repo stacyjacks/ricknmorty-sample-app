@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RicknMortyCharacters</string>
+    <string name="missing_image_content_description">Missing image thumbnail</string>
+</resources>

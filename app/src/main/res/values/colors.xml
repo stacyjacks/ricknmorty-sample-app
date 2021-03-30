@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#17ACC9</color>
+    <color name="colorPrimaryDark">#008DA2</color>
+    <color name="colorAccent">#D2DA4C</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGrey">#d1d1d1</color>
+
+    <integer-array name="colors_loading">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorAccent</item>
+    </integer-array>
+</resources>
