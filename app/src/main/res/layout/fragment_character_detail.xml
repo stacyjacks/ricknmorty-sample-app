@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="always"
+        android:transitionGroup="true">
+
+        <ImageView
+            android:id="@+id/characterPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true"
+            android:src="@drawable/placeholder"
+            android:contentDescription="@{viewModel.singleCharacter.name}"
+            app:layout_constraintBottom_toTopOf="@id/characterNameDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/characterNameDetail"
+            style="@style/LargeText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regular_padding"
+            android:text="@{viewModel.singleCharacter.name}"
+            android:textAlignment="viewStart"
+            app:layout_constraintBottom_toTopOf="@id/characterLastKnownLocation"
+            app:layout_constraintEnd_toStartOf="@id/characterGender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterPicture"
+            tools:text="Character name" />
+
+        <ImageView
+            android:id="@+id/characterGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@{viewModel.singleCharacter.status}"
+            android:paddingVertical="@dimen/regular_padding"
+            app:layout_constraintBottom_toTopOf="@id/characterLastKnownLocation"
+            app:layout_constraintEnd_toStartOf="@id/characterStatus"
+            app:layout_constraintStart_toEndOf="@id/characterNameDetail"
+            app:layout_constraintTop_toBottomOf="@id/characterPicture"
+            app:srcCompat="@drawable/gender_female" />
+
+        <ImageView
+            android:id="@+id/characterStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@{viewModel.singleCharacter.status}"
+            android:padding="@dimen/regular_padding"
+            app:layout_constraintBottom_toTopOf="@id/characterLastKnownLocation"
+            app:layout_constraintTop_toBottomOf="@id/characterPicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/alive_status" />
+
+        <TextView
+            android:id="@+id/characterLastKnownLocation"
+            style="@style/NormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/regular_padding"
+            android:text="@{viewModel.singleCharacter.locationData.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterNameDetail"
+            tools:text="@string/dummy_location"/>
+
+        <TextView
+            android:id="@+id/characterOrigin"
+            style="@style/NormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/regular_padding"
+            android:text="@{viewModel.singleCharacter.origin.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterLastKnownLocation"
+            tools:text="@string/dummy_origin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

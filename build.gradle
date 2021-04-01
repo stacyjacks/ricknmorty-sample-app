@@ -5,7 +5,7 @@ buildscript {
         material_version = "1.4.0-alpha01"
         nav_version = "2.3.4"
         retrofit_version = "2.9.0"
-        moshi_version = "1.9.3"
+        moshi_version = "1.11.0"
         glide_version = '4.11.0'
         stetho_version = '1.5.1'
         paging_version = '3.0.0-beta03'

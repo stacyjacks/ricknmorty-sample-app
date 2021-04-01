@@ -5,10 +5,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.CharacterViewholderBinding
+import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
 class CharacterViewHolder(private val context: Context, private val binding: CharacterViewholderBinding): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(characterItem: CharacterListViewModel.CharacterData) {
+    fun bind(characterItem: CharacterViewModel.CharacterData) {
         binding.apply {
             characterName.text = characterItem.name
             characterStatus.text = characterItem.status
@@ -19,16 +20,16 @@ class CharacterViewHolder(private val context: Context, private val binding: Cha
         }
     }
 
-    object DiffCallback: DiffUtil.ItemCallback<CharacterListViewModel.CharacterData>() {
+    object DiffCallback: DiffUtil.ItemCallback<CharacterViewModel.CharacterData>() {
         override fun areItemsTheSame(
-            oldItem: CharacterListViewModel.CharacterData,
-            newItem: CharacterListViewModel.CharacterData): Boolean {
+            oldItem: CharacterViewModel.CharacterData,
+            newItem: CharacterViewModel.CharacterData): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: CharacterListViewModel.CharacterData,
-            newItem: CharacterListViewModel.CharacterData): Boolean {
+            oldItem: CharacterViewModel.CharacterData,
+            newItem: CharacterViewModel.CharacterData): Boolean {
             return oldItem.id == newItem.id
         }
     }

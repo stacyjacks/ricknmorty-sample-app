@@ -1,12 +1,11 @@
-package kurmakaeva.anastasia.ricknmortycharacters.ui.listfragment
+package kurmakaeva.anastasia.ricknmortycharacters.ui
 
-import android.app.Application
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import kurmakaeva.anastasia.ricknmortycharacters.CharacterListRepository
 import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService
 
-class CharacterListViewModel(application: Application): AndroidViewModel(application) {
+class CharacterViewModel(): ViewModel() {
 
     private val repository = CharacterListRepository(RickAndMortyApiService.instance)
 
@@ -14,9 +13,19 @@ class CharacterListViewModel(application: Application): AndroidViewModel(applica
     val listOfCharacters: LiveData<List<CharacterData>>
         get() = _listOfCharacters
 
+    private val _singleCharacter = MutableLiveData<CharacterData>()
+    val singleCharacter: LiveData<CharacterData>
+        get() = _singleCharacter
+
     fun getAllCharacters() {
         viewModelScope.launch {
             _listOfCharacters.value = repository.getAllCharacters()
+        }
+    }
+
+    fun getSingleCharacter(position: Int) {
+        viewModelScope.launch {
+            _singleCharacter.value = repository.getIndividualCharacter(position)
         }
     }
 

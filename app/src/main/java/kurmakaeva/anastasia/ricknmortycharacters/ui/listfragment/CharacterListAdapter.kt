@@ -2,12 +2,16 @@ package kurmakaeva.anastasia.ricknmortycharacters.ui.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ListAdapter
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.CharacterViewholderBinding
+import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
-class CharacterListAdapter()
-    : ListAdapter<CharacterListViewModel.CharacterData, CharacterViewHolder>(CharacterViewHolder.DiffCallback) {
+interface SelectableCharacter {
+    fun selectedCharacter(position: Int)
+}
+
+class CharacterListAdapter(private val selectableCharacter: SelectableCharacter)
+    : ListAdapter<CharacterViewModel.CharacterData, CharacterViewHolder>(CharacterViewHolder.DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val binding = CharacterViewholderBinding
@@ -24,8 +28,7 @@ class CharacterListAdapter()
         }
 
         holder.itemView.setOnClickListener {
-//            val characterName = characterItem?.name ?: return@setOnClickListener
-//            val characterStatus = characterItem.status
+            selectableCharacter.selectedCharacter(position)
         }
     }
 }

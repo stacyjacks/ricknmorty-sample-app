@@ -1,5 +1,6 @@
 package kurmakaeva.anastasia.ricknmortycharacters.service
 
+import kurmakaeva.anastasia.ricknmortycharacters.model.RickAndMortyCharacter
 import kurmakaeva.anastasia.ricknmortycharacters.model.RickAndMortyApiResponse
 import retrofit2.http.GET
 

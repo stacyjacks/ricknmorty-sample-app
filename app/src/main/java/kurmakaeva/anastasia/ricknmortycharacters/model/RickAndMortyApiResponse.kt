@@ -1,8 +1,11 @@
 package kurmakaeva.anastasia.ricknmortycharacters.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class RickAndMortyApiResponse(
     val info: DataInfo,
-    val results: List<Character>
+    val results: List<RickAndMortyCharacter>
 )
 
 data class DataInfo(
@@ -11,7 +14,7 @@ data class DataInfo(
     val next: String
 )
 
-data class Character(
+data class RickAndMortyCharacter(
     val id: Int,
     val name: String,
     val status: String,

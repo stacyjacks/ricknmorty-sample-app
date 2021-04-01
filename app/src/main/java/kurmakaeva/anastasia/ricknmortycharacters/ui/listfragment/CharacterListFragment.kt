@@ -6,16 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kurmakaeva.anastasia.ricknmortycharacters.R
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.FragmentCharacterListBinding
+import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
-class CharacterListFragment: Fragment() {
+class CharacterListFragment: Fragment(), SelectableCharacter {
 
     private lateinit var binding: FragmentCharacterListBinding
     private lateinit var adapter: CharacterListAdapter
-    private lateinit var viewModel: CharacterListViewModel
+    private val sharedViewModel: CharacterViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +25,7 @@ class CharacterListFragment: Fragment() {
         savedInstanceState: Bundle?): View {
 
         binding = DataBindingUtil
-            .inflate(inflater, R.layout.fragment_character_list, container, false)
-
-        viewModel = ViewModelProvider(this).get(CharacterListViewModel::class.java)
+            .inflate(inflater, R.layout.fragment_character_list, container,false)
 
         binding.lifecycleOwner = this
 
@@ -35,12 +35,18 @@ class CharacterListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = CharacterListAdapter()
+        adapter = CharacterListAdapter(this)
         binding.listOfCharactersRV.adapter = adapter
 
-        viewModel.getAllCharacters()
-        viewModel.listOfCharacters.observe(viewLifecycleOwner, Observer {
+        sharedViewModel.getAllCharacters()
+        sharedViewModel.listOfCharacters.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
+    }
+
+    override fun selectedCharacter(position: Int) {
+        sharedViewModel.getSingleCharacter(position)
+        val action = CharacterListFragmentDirections.actionCharacterListFragmentToCharacterDetailFragment(position)
+        this.findNavController().navigate(action)
     }
 }
