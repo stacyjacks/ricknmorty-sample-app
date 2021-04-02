@@ -5,12 +5,12 @@ import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
 class CharacterListRepository(private val rickAndMortyApiService: RickAndMortyApiService) {
-    private var cachedCharacters: List<RickAndMortyCharacter>? = null
+    private var cachedCharacters: MutableList<RickAndMortyCharacter> = mutableListOf()
 
-    suspend fun getAllCharacters(): List<CharacterViewModel.CharacterData> {
-        val listResponse = rickAndMortyApiService.getCharacters()
+    suspend fun getAllCharacters(page: Int): List<CharacterViewModel.CharacterData> {
+        val listResponse = rickAndMortyApiService.getCharacters(page)
         val listOfCharacters = listResponse.results
-        cachedCharacters = listOfCharacters
+        cachedCharacters.plusAssign(listOfCharacters)
 
         return listOfCharacters.map {
             CharacterViewModel.CharacterData(
@@ -26,9 +26,8 @@ class CharacterListRepository(private val rickAndMortyApiService: RickAndMortyAp
         }
     }
 
-
-    fun getIndividualCharacter(index: Int): CharacterViewModel.CharacterData? {
-       return cachedCharacters?.get(index)?.let {
+    fun getIndividualCharacter(index: Int): CharacterViewModel.CharacterData {
+       return cachedCharacters.get(index).let {
            CharacterViewModel.CharacterData(
                it.id,
                it.name,

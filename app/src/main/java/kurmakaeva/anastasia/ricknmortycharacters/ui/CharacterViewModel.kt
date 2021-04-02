@@ -1,7 +1,12 @@
 package kurmakaeva.anastasia.ricknmortycharacters.ui
 
 import androidx.lifecycle.*
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import androidx.paging.liveData
 import kotlinx.coroutines.launch
+import kurmakaeva.anastasia.ricknmortycharacters.paging.ListPagingSource
 import kurmakaeva.anastasia.ricknmortycharacters.repo.CharacterListRepository
 import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService
 
@@ -9,19 +14,16 @@ class CharacterViewModel(): ViewModel() {
 
     private val repository = CharacterListRepository(RickAndMortyApiService.instance)
 
-    private val _listOfCharacters = MutableLiveData<List<CharacterData>>()
-    val listOfCharacters: LiveData<List<CharacterData>>
-        get() = _listOfCharacters
+    private fun getCharacters() = Pager(PagingConfig(pageSize = 20, prefetchDistance = 1)) {
+        ListPagingSource(repository)
+    }.liveData
+
+    val listOfCharacters = getCharacters().cachedIn(viewModelScope)
 
     private val _singleCharacter = MutableLiveData<CharacterData>()
     val singleCharacter: LiveData<CharacterData>
         get() = _singleCharacter
 
-    fun getAllCharacters() {
-        viewModelScope.launch {
-            _listOfCharacters.value = repository.getAllCharacters()
-        }
-    }
 
     fun getSingleCharacter(position: Int) {
         viewModelScope.launch {

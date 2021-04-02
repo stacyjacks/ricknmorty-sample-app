@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+    </data>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -14,6 +18,7 @@
                 android:layout_margin="@dimen/regular_margin"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/missing_image_content_description"
+                app:layout_constraintEnd_toStartOf="@id/characterName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -25,12 +30,11 @@
                 android:textStyle="bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/regular_margin"
-                android:layout_marginTop="@dimen/large_margin"
                 app:layout_constraintBottom_toTopOf="@id/characterStatus"
                 app:layout_constraintStart_toEndOf="@id/characterThumbnail"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Character name" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Character name is extremely long" />
 
             <TextView
                 android:id="@+id/characterStatus"
@@ -40,17 +44,18 @@
                 android:layout_marginHorizontal="@dimen/regular_margin"
                 app:layout_constraintStart_toEndOf="@id/characterThumbnail"
                 app:layout_constraintTop_toBottomOf="@id/characterName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/characterStatusInList"
                 tools:text="Alive" />
 
             <ImageView
                 android:id="@+id/characterStatusInList"
                 android:layout_width="@dimen/small_status_icon"
                 android:layout_height="@dimen/small_status_icon"
-                android:layout_marginVertical="@dimen/small_margin"
-                android:adjustViewBounds="true"
                 android:contentDescription="@string/missing_description"
                 app:layout_constraintTop_toBottomOf="@id/characterName"
                 app:layout_constraintStart_toEndOf="@id/characterStatus"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:srcCompat="@drawable/alive_status" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

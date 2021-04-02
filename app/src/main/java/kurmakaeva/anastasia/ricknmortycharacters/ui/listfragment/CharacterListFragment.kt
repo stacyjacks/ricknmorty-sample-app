@@ -38,9 +38,8 @@ class CharacterListFragment: Fragment(), SelectableCharacter {
         adapter = CharacterListAdapter(this)
         binding.listOfCharactersRV.adapter = adapter
 
-        sharedViewModel.getAllCharacters()
         sharedViewModel.listOfCharacters.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+            adapter.submitData(viewLifecycleOwner.lifecycle, it)
         })
     }
 
