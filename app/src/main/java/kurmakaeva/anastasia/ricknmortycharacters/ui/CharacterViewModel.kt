@@ -2,7 +2,7 @@ package kurmakaeva.anastasia.ricknmortycharacters.ui
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
-import kurmakaeva.anastasia.ricknmortycharacters.CharacterListRepository
+import kurmakaeva.anastasia.ricknmortycharacters.repo.CharacterListRepository
 import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService
 
 class CharacterViewModel(): ViewModel() {

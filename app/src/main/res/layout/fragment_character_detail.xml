@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -20,7 +19,6 @@
             android:id="@+id/characterPicture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
             android:src="@drawable/placeholder"
             android:contentDescription="@{viewModel.singleCharacter.name}"
@@ -34,6 +32,7 @@
             style="@style/LargeText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
             android:padding="@dimen/regular_padding"
             android:text="@{viewModel.singleCharacter.name}"
             android:textAlignment="viewStart"
@@ -47,7 +46,7 @@
             android:id="@+id/characterGender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/regular_margin"
             android:adjustViewBounds="true"
             android:contentDescription="@{viewModel.singleCharacter.status}"
             android:paddingVertical="@dimen/regular_padding"
@@ -70,32 +69,81 @@
             app:srcCompat="@drawable/alive_status" />
 
         <TextView
-            android:id="@+id/characterLastKnownLocation"
-            style="@style/NormalText"
-            android:layout_width="wrap_content"
+            android:id="@+id/lastKnownLocationLabel"
+            style="@style/SmallText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:padding="@dimen/regular_padding"
-            android:text="@{viewModel.singleCharacter.locationData.name}"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/last_known_location_label"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/originLabel"
+            app:layout_constraintEnd_toStartOf="@id/characterLastKnownLocation"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/characterNameDetail"
+            app:layout_constraintTop_toBottomOf="@id/characterNameDetail" />
+
+        <TextView
+            android:id="@+id/characterLastKnownLocation"
+            style="@style/SmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.singleCharacter.locationData.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/lastKnownLocationLabel"
+            app:layout_constraintBottom_toTopOf="@id/characterOrigin"
+            app:layout_constraintBaseline_toBaselineOf="@id/lastKnownLocationLabel"
             tools:text="@string/dummy_location"/>
 
         <TextView
-            android:id="@+id/characterOrigin"
-            style="@style/NormalText"
-            android:layout_width="wrap_content"
+            android:id="@+id/originLabel"
+            style="@style/SmallText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:padding="@dimen/regular_padding"
-            android:text="@{viewModel.singleCharacter.origin.name}"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/origin_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/characterOrigin"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastKnownLocationLabel" />
+
+        <TextView
+            android:id="@+id/characterOrigin"
+            style="@style/SmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.singleCharacter.origin.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/originLabel"
             app:layout_constraintTop_toBottomOf="@id/characterLastKnownLocation"
+            app:layout_constraintBottom_toTopOf="@id/characterSpecies"
+            app:layout_constraintBaseline_toBaselineOf="@id/originLabel"
             tools:text="@string/dummy_origin"/>
+
+        <TextView
+            android:id="@+id/speciesLabel"
+            style="@style/SmallText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regular_padding"
+            android:text="@string/species_label"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/characterSpecies"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/originLabel" />
+
+        <TextView
+            android:id="@+id/characterSpecies"
+            style="@style/SmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.singleCharacter.species}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/speciesLabel"
+            app:layout_constraintTop_toBottomOf="@id/characterOrigin"
+            app:layout_constraintBaseline_toBaselineOf="@id/speciesLabel"
+            tools:text="@string/dummy_species"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

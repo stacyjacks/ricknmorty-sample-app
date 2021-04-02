@@ -5,4 +5,8 @@
     <string name="dummy_status">Dummy status</string>
     <string name="dummy_origin">Dummy origin</string>
     <string name="dummy_location">Dummy location</string>
+    <string name="last_known_location_label">Last known location:</string>
+    <string name="origin_label">Origin:</string>
+    <string name="dummy_species">Dummy species</string>
+    <string name="species_label">Species:</string>
 </resources>

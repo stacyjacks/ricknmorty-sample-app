@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kurmakaeva.anastasia.ricknmortycharacters.R
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.CharacterViewholderBinding
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
@@ -14,8 +15,15 @@ class CharacterViewHolder(private val context: Context, private val binding: Cha
             characterName.text = characterItem.name
             characterStatus.text = characterItem.status
 
+            when (characterItem.status) {
+                "Alive" -> characterStatusInList.setImageResource(R.drawable.alive_status)
+                "Dead" -> characterStatusInList.setImageResource(R.drawable.dead_status)
+                else -> characterStatusInList.setImageResource(R.drawable.unknown_status)
+            }
+
             Glide.with(context)
                 .load(characterItem.image)
+                .circleCrop()
                 .into(characterThumbnail)
         }
     }

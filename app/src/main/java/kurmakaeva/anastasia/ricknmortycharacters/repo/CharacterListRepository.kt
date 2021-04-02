@@ -1,4 +1,4 @@
-package kurmakaeva.anastasia.ricknmortycharacters
+package kurmakaeva.anastasia.ricknmortycharacters.repo
 
 import kurmakaeva.anastasia.ricknmortycharacters.model.RickAndMortyCharacter
 import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService

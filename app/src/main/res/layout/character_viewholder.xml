@@ -3,14 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/regular_margin"
-        android:transitionGroup="true"
-        app:strokeColor="@color/colorGrey"
-        app:strokeWidth="1dp">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -30,9 +22,11 @@
             <TextView
                 android:id="@+id/characterName"
                 style="@style/NormalText"
-                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/large_margin"
+                android:layout_marginHorizontal="@dimen/regular_margin"
+                android:layout_marginTop="@dimen/large_margin"
                 app:layout_constraintBottom_toTopOf="@id/characterStatus"
                 app:layout_constraintStart_toEndOf="@id/characterThumbnail"
                 app:layout_constraintTop_toTopOf="parent"
@@ -43,14 +37,22 @@
                 style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/large_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginHorizontal="@dimen/regular_margin"
                 app:layout_constraintStart_toEndOf="@id/characterThumbnail"
                 app:layout_constraintTop_toBottomOf="@id/characterName"
                 tools:text="Alive" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/characterStatusInList"
+                android:layout_width="@dimen/small_status_icon"
+                android:layout_height="@dimen/small_status_icon"
+                android:layout_marginVertical="@dimen/small_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/missing_description"
+                app:layout_constraintTop_toBottomOf="@id/characterName"
+                app:layout_constraintStart_toEndOf="@id/characterStatus"
+                app:srcCompat="@drawable/alive_status" />
 
-    </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
