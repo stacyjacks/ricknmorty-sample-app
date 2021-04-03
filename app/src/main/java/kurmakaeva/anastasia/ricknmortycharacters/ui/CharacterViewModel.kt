@@ -15,7 +15,9 @@ class CharacterViewModel(): ViewModel() {
     private val repository = CharacterListRepository(RickAndMortyApiService.instance)
 
     private fun getCharacters() = Pager(PagingConfig(pageSize = 20, prefetchDistance = 1)) {
-        ListPagingSource(repository)
+        ListPagingSource(repository) {
+            emitSnackbarEvent(it)
+        }
     }.liveData
 
     val listOfCharacters = getCharacters().cachedIn(viewModelScope)
@@ -27,7 +29,11 @@ class CharacterViewModel(): ViewModel() {
 
     fun getSingleCharacter(position: Int) {
         viewModelScope.launch {
-            _singleCharacter.value = repository.getIndividualCharacter(position)
+            try {
+                _singleCharacter.value = repository.getIndividualCharacter(position)
+            } catch (e: Exception) {
+                emitSnackbarEvent(e.localizedMessage)
+            }
         }
     }
 
@@ -49,4 +55,12 @@ class CharacterViewModel(): ViewModel() {
     data class OriginData(
         val name: String = ""
     )
+
+    private val _showSnackbar = MutableLiveData<String?>()
+    val showSnackbar: LiveData<String?>
+        get() = _showSnackbar
+
+    private fun emitSnackbarEvent(errorMessage: String?) {
+        _showSnackbar.value = errorMessage
+    }
 }

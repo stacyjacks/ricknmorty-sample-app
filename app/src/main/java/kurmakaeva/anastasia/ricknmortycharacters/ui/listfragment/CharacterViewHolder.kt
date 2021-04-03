@@ -25,6 +25,9 @@ class CharacterViewHolder(private val context: Context, private val binding: Cha
                 .load(characterItem.image)
                 .circleCrop()
                 .into(characterThumbnail)
+
+            characterThumbnail.contentDescription = characterItem.name
+            characterStatusInList.contentDescription = characterItem.status
         }
     }
 

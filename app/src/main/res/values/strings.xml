@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">RicknMortyCharacters</string>
     <string name="missing_image_content_description">Missing image thumbnail</string>
-    <string name="missing_description">No description.</string>
+    <string name="image_content_description">Character image</string>
+    <string name="status_content_description">Character status</string>
     <string name="dummy_status">Dummy status</string>
     <string name="dummy_origin">Dummy origin</string>
     <string name="dummy_location">Dummy location</string>
+    <string name="dummy_species">Dummy species</string>
     <string name="last_known_location_label">Last known location:</string>
     <string name="origin_label">Origin:</string>
-    <string name="dummy_species">Dummy species</string>
     <string name="species_label">Species:</string>
+    <string name="retry_button">Retry</string>
+    <string name="loading_error_message">Something went wrong.</string>
 </resources>

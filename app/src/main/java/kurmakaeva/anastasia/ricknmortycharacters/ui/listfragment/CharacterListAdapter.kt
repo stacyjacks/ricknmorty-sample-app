@@ -3,7 +3,6 @@ package kurmakaeva.anastasia.ricknmortycharacters.ui.listfragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ListAdapter
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.CharacterViewholderBinding
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 
