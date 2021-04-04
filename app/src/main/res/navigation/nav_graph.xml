@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="kurmakaeva.anastasia.ricknmortycharacters.ui.detailfragment.CharacterDetailFragment"
-        android:label="CharacterDetailFragment" >
+        android:label="Detail">
         <argument
             android:name="position"
             app:argType="integer" />

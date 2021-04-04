@@ -9,7 +9,8 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.PageStateItemBinding
 
-class LoadStateAdapter(private val retry: () -> Unit): LoadStateAdapter<kurmakaeva.anastasia.ricknmortycharacters.paging.LoadStateAdapter.LoadStateViewHolder>() {
+class LoadStateAdapter(private val retry: () -> Unit)
+    : LoadStateAdapter<kurmakaeva.anastasia.ricknmortycharacters.paging.LoadStateAdapter.LoadStateViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
         val binding = PageStateItemBinding
