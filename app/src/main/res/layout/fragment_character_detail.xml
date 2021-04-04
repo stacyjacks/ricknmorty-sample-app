@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <data
+        android:layout_width="81dp"
+        android:layout_height="21dp">
+
         <variable
             name="viewModel"
             type="kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel" />
@@ -13,15 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="always"
-        android:transitionGroup="true">
+        android:transitionGroup="true"
+        android:layout_marginTop="-4dp">
 
         <ImageView
             android:id="@+id/characterPicture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/placeholder"
             android:contentDescription="@{viewModel.singleCharacter.name}"
+            android:src="@drawable/placeholder"
             app:layout_constraintBottom_toTopOf="@id/characterNameDetail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
