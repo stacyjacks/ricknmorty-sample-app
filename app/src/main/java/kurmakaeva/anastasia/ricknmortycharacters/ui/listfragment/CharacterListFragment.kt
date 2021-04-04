@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -16,12 +15,13 @@ import kurmakaeva.anastasia.ricknmortycharacters.R
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.FragmentCharacterListBinding
 import kurmakaeva.anastasia.ricknmortycharacters.paging.LoadStateAdapter
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterListFragment: Fragment(), SelectableCharacter {
 
     private lateinit var binding: FragmentCharacterListBinding
     private lateinit var adapter: CharacterListAdapter
-    private val sharedViewModel: CharacterViewModel by activityViewModels()
+    private val sharedViewModel by viewModel<CharacterViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

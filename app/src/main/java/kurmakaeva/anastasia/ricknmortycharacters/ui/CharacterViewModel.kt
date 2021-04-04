@@ -7,12 +7,9 @@ import androidx.paging.cachedIn
 import androidx.paging.liveData
 import kotlinx.coroutines.launch
 import kurmakaeva.anastasia.ricknmortycharacters.paging.ListPagingSource
-import kurmakaeva.anastasia.ricknmortycharacters.repo.CharacterListRepository
-import kurmakaeva.anastasia.ricknmortycharacters.service.RickAndMortyApiService
+import kurmakaeva.anastasia.ricknmortycharacters.repo.ICharacterRepository
 
-class CharacterViewModel(): ViewModel() {
-
-    private val repository = CharacterListRepository(RickAndMortyApiService.instance)
+class CharacterViewModel(private val repository: ICharacterRepository): ViewModel() {
 
     private fun getCharacters() = Pager(PagingConfig(pageSize = 20, prefetchDistance = 1)) {
         ListPagingSource(repository) {

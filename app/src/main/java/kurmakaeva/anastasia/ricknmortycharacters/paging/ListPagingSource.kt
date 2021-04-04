@@ -2,13 +2,12 @@ package kurmakaeva.anastasia.ricknmortycharacters.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.google.android.material.snackbar.Snackbar
-import kurmakaeva.anastasia.ricknmortycharacters.repo.CharacterListRepository
+import kurmakaeva.anastasia.ricknmortycharacters.repo.ICharacterRepository
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
 import java.lang.Exception
 
 class ListPagingSource(
-    private val repository: CharacterListRepository, private val showSnackbar: (String?) -> Unit)
+    private val repository: ICharacterRepository, private val showSnackbar: (String?) -> Unit)
     : PagingSource<Int, CharacterViewModel.CharacterData>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterViewModel.CharacterData> {

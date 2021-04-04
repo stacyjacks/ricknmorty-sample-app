@@ -5,18 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import kurmakaeva.anastasia.ricknmortycharacters.R
 import kurmakaeva.anastasia.ricknmortycharacters.databinding.FragmentCharacterDetailBinding
 import kurmakaeva.anastasia.ricknmortycharacters.ui.CharacterViewModel
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class CharacterDetailFragment: Fragment() {
 
     private lateinit var binding: FragmentCharacterDetailBinding
-    private val sharedViewModel: CharacterViewModel by activityViewModels()
+    private val sharedViewModel by sharedViewModel<CharacterViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
